@@ -1,0 +1,10 @@
+element.style {
+  border-radius: 11px;
+  border-top-width: 10px;
+  border-top-style: inset;
+}
+
+.text-center {
+  text-align: center!important;
+}
+

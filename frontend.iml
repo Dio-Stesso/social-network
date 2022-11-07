@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+    <output url="file://$MODULE_DIR$/frontend/target/classes" />
+    <output-test url="file://$MODULE_DIR$/frontend/target/test-classes" />
+    <content url="file://$MODULE_DIR$/frontend">
+      <sourceFolder url="file://$MODULE_DIR$/frontend/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/frontend/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/frontend/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/frontend/target" />
+    </content>
+    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

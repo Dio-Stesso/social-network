@@ -1,0 +1,29 @@
+<div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
+  <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+    <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
+      <div class="p-5">
+        <div class="text-center">
+          <h4 class="text-dark mb-4">Create an Account!</h4>
+        </div>
+        <form class="user">
+          <h5>{{this.errorMessage}}</h5>
+          <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Username" [(ngModel)]="username" name="username"></div>
+          <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" placeholder="Email Address" [(ngModel)]="email" name="email"></div>
+          <div class="row mb-3">
+            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" name="password" placeholder="Password" [(ngModel)]="password"></div>
+            <div class="col-sm-6"><input class="form-control form-control-user" type="password" name="repeatPassword" placeholder="Repeat Password" [(ngModel)]="repeatPassword"></div>
+          </div>
+          <div class="row mb-3">
+            <p id="emailErrorMsg" class="text-danger" style="display:none;"></p>
+            <p id="passwordErrorMsg" class="text-danger" style="display:none;">Paragraph</p>
+          </div><button class="btn btn-primary d-block btn-user w-100" id="submitBtn" type="submit" (click)="register()">Register Account</button>
+          <hr>
+        </form>
+        <div class="text-center"><a class="small" href="#" (click)="toLogin()">Already have an account? Login!</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/bootstrap/js/bootstrap.min.js?h=01bb7ae0c0b11509558f2aa83f244399"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js" type="module"></script>
+<script src="assets/js/Lightbox-Gallery.js?h=64eb55ccbc6ead5e91ebe308caacba6e"></script>

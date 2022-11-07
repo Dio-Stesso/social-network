@@ -1,0 +1,16 @@
+version: "3"
+services:
+  backend:
+    container_name: social-network-api
+    image: social-network-api
+    build: social-network-api/.
+    ports:
+      - "8080:8080"
+  frontend:
+    container_name: social-network-ui
+    image: social-network-ui
+    build: frontend/.
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
