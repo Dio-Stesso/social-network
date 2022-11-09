@@ -43,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register",
                         "/login",
                         "/users/reset-password",
-                        "/users/reset-password/**").permitAll()
+                        "/users/reset-password/**",
+                        "/sba-websocket").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
