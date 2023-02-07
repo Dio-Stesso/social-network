@@ -1,6 +1,7 @@
 package com.benatti.socialnetwork.security;
 
 import com.benatti.socialnetwork.exception.AuthenticationException;
+import com.benatti.socialnetwork.model.Role;
 import com.benatti.socialnetwork.model.User;
 import com.benatti.socialnetwork.service.RoleService;
 import com.benatti.socialnetwork.service.UserService;
@@ -28,7 +29,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (userService.findByUsernameOrEmail(user.getUsername(), user.getEmail()).isPresent()) {
             throw new AuthenticationException("Email or username already exist!");
         }
-        user.setRoles(Set.of(roleService.getRoleByName("USER")));
+        user.setRoles(Set.of(roleService.getRoleByName(Role.RoleName.valueOf("USER"))));
         return userService.save(user);
     }
 

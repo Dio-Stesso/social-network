@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
-    @Query("FROM ChatRoom r WHERE r.firstUser=?1 OR r.secondUser=?1")
+    @Query("FROM ChatRoom r WHERE r.firstUserUsername=?1 OR r.secondUserUsername=?1")
     List<ChatRoom> findByUser(String username);
 
-    @Query("FROM ChatRoom r WHERE r.firstUser=?1 AND r.secondUser=?2 "
-            + "OR r.firstUser=?2 AND r.secondUser=?1")
-    Optional<ChatRoom> findByFirstUserAndSecondUser(String firstUser, String secondUser);
+    @Query("FROM ChatRoom r WHERE r.firstUserUsername=?1 AND r.secondUserUsername=?2 "
+            + "OR r.firstUserUsername=?2 AND r.secondUserUsername=?1")
+    Optional<ChatRoom> findByFirstUserUsernameAndSecondUserUsernameIn(
+            String firstUserUsername, String secondUserUsername);
 }

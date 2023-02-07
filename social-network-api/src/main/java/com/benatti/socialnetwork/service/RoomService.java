@@ -4,7 +4,7 @@ import com.benatti.socialnetwork.model.ChatRoom;
 import java.util.List;
 
 public interface RoomService {
-    ChatRoom find(Long id);
+    ChatRoom findById(Long id);
 
     ChatRoom save(ChatRoom room);
 

@@ -16,7 +16,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public ChatRoom find(Long id) {
+    public ChatRoom findById(Long id) {
         return repository.findById(id).orElseThrow(() ->
                 new RuntimeException("Room by id not founded " + id));
     }
@@ -39,13 +39,13 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public ChatRoom createRoom(String firstUser, String secondUser) {
         Optional<ChatRoom> optionalChatRoom =
-                repository.findByFirstUserAndSecondUser(firstUser, secondUser);
+                repository.findByFirstUserUsernameAndSecondUserUsernameIn(firstUser, secondUser);
         if (optionalChatRoom.isPresent()) {
             return optionalChatRoom.get();
         }
         ChatRoom room = new ChatRoom();
-        room.setFirstUser(firstUser);
-        room.setSecondUser(secondUser);
+        room.setFirstUserUsername(firstUser);
+        room.setSecondUserUsername(secondUser);
         return repository.save(room);
     }
 }

@@ -15,17 +15,11 @@ public class MailSenderImpl implements MailSender {
 
     @Override
     public boolean send(String emailTo, String subject, String messageText) {
-        try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(emailTo);
             message.setSubject(subject);
             message.setText(messageText);
             mailSender.send(message);
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-
-        }
     }
 }

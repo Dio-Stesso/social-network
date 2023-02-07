@@ -41,8 +41,8 @@ public class MessageServiceImpl implements MessageService {
     public ChatMessage save(String messageText, String senderName, Long roomId) {
         Optional<ChatRoom> roomOptional = roomRepository.findById(roomId);
         if (roomOptional.isPresent()
-                && (roomOptional.get().getFirstUser().equals(senderName)
-                || roomOptional.get().getSecondUser().equals(senderName))) {
+                && (roomOptional.get().getFirstUserUsername().equals(senderName)
+                || roomOptional.get().getSecondUserUsername().equals(senderName))) {
             ChatMessage message = new ChatMessage();
             message.setMessage(messageText);
             message.setRoom(roomOptional.get());

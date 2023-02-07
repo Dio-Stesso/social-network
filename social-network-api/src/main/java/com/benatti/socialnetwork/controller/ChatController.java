@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,9 +39,10 @@ public class ChatController {
     public List<RoomResponseDto> chats(Authentication authentication) {
         return roomService.findByUsername(authentication.getName())
                 .stream()
-                .map(room -> roomMapper.toDto(room.getFirstUser()
-                        .equals(authentication.getName())
-                        ? room.getSecondUser() : room.getFirstUser(), "", room.getId()))
+                .map(room -> roomMapper.toDto(room.getFirstUserUsername()
+                                .equals(authentication.getName())
+                                ? room.getSecondUserUsername() : room.getFirstUserUsername(),
+                        "", room.getId()))
                 .collect(Collectors.toList());
     }
 
@@ -55,16 +54,8 @@ public class ChatController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/{roomId}")
-    public MessageResponseDto sendMessage(@PathVariable Long roomId,
-                                          @RequestBody String messageText,
-                                          Authentication authentication) {
-        return messageMapper.mapToDto(messageService
-                .save(messageText, authentication.getName(), roomId));
-    }
-
     @DeleteMapping("/{roomId}")
     public void deleteChat(@PathVariable Long roomId) {
-        roomService.delete(roomService.find(roomId));
+        roomService.delete(roomService.findById(roomId));
     }
 }

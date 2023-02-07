@@ -27,18 +27,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        return repository.find(id)
+        return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Can`t find User by id " + id));
     }
 
     @Override
     public Optional<User> findByUsernameOrEmail(String username, String email) {
-        return repository.findUserByUsernameOrEmail(username, email);
+        return repository.findByUsernameOrEmail(username, email);
     }
 
     @Override
     public void delete(Long id) {
-        repository.delete(repository.find(id)
+        repository.delete(repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Can`t delete User by id " + id)));
     }
 

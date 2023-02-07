@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     @Query("FROM User u JOIN FETCH u.roles WHERE u.username=?1 OR u.email=?2")
-    Optional<User> findUserByUsernameOrEmail(String username, String email);
+    Optional<User> findByUsernameOrEmail(String username, String email);
 
     @Query("FROM User u JOIN FETCH u.roles WHERE u.id = ?1")
-    Optional<User> find(Long id);
+    Optional<User> findById(Long id);
 
     Optional<User> findByResetPasswordId(String id);
 }
